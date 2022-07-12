@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms ="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+             x:Class="Ejercicio2_2ANGELGARCIA.MainPage">
+
+    <StackLayout>
+        <FlexLayout Direction="Row"
+                AlignItems="Center"
+                        Padding="5"
+                    BackgroundColor="Orange"
+                JustifyContent="SpaceEvenly">
+
+            <Label Text="CREAR FIRMA" FontSize="18" Padding="10,5,30,10"/>
+        </FlexLayout>
+        <Label Text="" FontSize="18" Padding="10,5,30,10"/>
+        <forms:SignaturePadView 
+            x:Name="firmaDigital"
+            StrokeWidth="3"
+            WidthRequest="280"
+            HeightRequest="260"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition  Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Nombre" FontSize="14" Grid.ColumnSpan="2"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0"/>
+            <Entry 
+                   Keyboard="Text" 
+                   x:Name="txtNombre" 
+                   BackgroundColor="White"
+                   Grid.ColumnSpan="2"  
+                    Grid.Row="1" 
+                    Grid.Column="0"/>
+
+            <Label Text="Descripcion" FontSize="14" Grid.ColumnSpan="2"  Grid.Row="2" Grid.Column="0" Padding="20,5,30,10"/>
+            <Editor Keyboard="Text"
+                    HeightRequest="100" 
+                    x:Name="txtDescripcion"
+                    Grid.ColumnSpan="2"  
+                    Grid.Row="3" 
+                    Grid.Column="0"
+                    />
+
+            <Button Text="Lista" x:Name="btnLista" Grid.Row="4" Grid.Column="0" Margin="10,0,10,0" Clicked="btnLista_Clicked"  BackgroundColor="Orange"/>
+            <Button Text="A SQLITE" x:Name="btnSqlite" Grid.Row="4" Grid.Column="1" Margin="10,0,10,0" Clicked="btnSqlite_Clicked"   BackgroundColor="Orange"/>
+
+        </Grid>
+
+    </StackLayout>
+
+</ContentPage>

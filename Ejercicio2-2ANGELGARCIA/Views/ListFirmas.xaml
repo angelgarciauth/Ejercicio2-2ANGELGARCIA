@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejercicio2_2ANGELGARCIA.Views.ListFirmas"
+             xmlns:Convertidor="clr-namespace:Ejercicio2_2ANGELGARCIA.Converter">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Convertidor:ByteArrayToImage x:Key="ByteToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <CollectionView x:Name="listFirmas"
+                            SelectionMode="Single"
+                            SelectionChanged="listFirmas_SelectionChanged">
+
+                <CollectionView.Header>
+                    <StackLayout>
+                        <Label Margin="10,0,0,0"
+                               Text="Listado de Firmas"
+                               FontSize="Title"
+                               BackgroundColor="Orange"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontAttributes="Bold"/>
+                    </StackLayout>
+                </CollectionView.Header>
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="6">
+                    </LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="10"
+                               HasShadow="False"
+                               BackgroundColor="#DDDDDE">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding firm,  Converter={StaticResource ByteToImage}}" 
+                                   HeightRequest="80"/>
+                                <StackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding nombre}" TextColor="Black"/>
+                                    <Label Text="{Binding descripcion}" TextColor="Black"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
